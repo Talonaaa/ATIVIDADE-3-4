@@ -1,0 +1,70 @@
+using System;
+
+class Triangulo {
+    private double A, B, C;
+
+    public Triangulo(double a, double b, double c) {
+        A = a;
+        B = b;
+        C = c;
+    }
+
+    public void setA(double a) {
+        if (a > 0) {
+            A = a;
+        } else {
+            Console.WriteLine("Valor inválido. Digite um valor maior que zero: ");
+            setA(double.Parse(Console.ReadLine()));
+        }
+    }
+
+    public void setB(double b) {
+        if (b > 0) {
+            B = b;
+        } else {
+            Console.WriteLine("Valor inválido. Digite um valor maior que zero: ");
+            setB(double.Parse(Console.ReadLine()));
+        }
+    }
+
+    public void setC(double c) {
+        if (c > 0) {
+            C = c;
+        } else {
+            Console.WriteLine("Valor inválido. Digite um valor maior que zero: ");
+            setC(double.Parse(Console.ReadLine()));
+        }
+    }
+
+    public void ClassificarTriangulo() {
+        if (A >= B + C) {
+            Console.WriteLine("NAO FORMA TRIANGULO");
+        } else if (A*A == B*B + C*C || B*B == A*A + C*C || C*C == A*A + B*B) {
+            Console.WriteLine("TRIANGULO RETANGULO");
+        } else if (A*A > B*B + C*C || B*B > A*A + C*C || C*C > A*A + B*B) {
+            Console.WriteLine("TRIANGULO OBTUSANGULO");
+        } else {
+            Console.WriteLine("TRIANGULO ACUTANGULO");
+        }
+
+        if (A == B && B == C) {
+            Console.WriteLine("TRIANGULO EQUILATERO");
+        } else if (A == B || A == C || B == C) {
+            Console.WriteLine("TRIANGULO ISOSCELES");
+        }
+    }
+}
+
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        Console.WriteLine("Digite os três lados do triângulo: ");
+        double A = double.Parse(Console.ReadLine());
+        double B = double.Parse(Console.ReadLine());
+        double C = double.Parse(Console.ReadLine());
+
+        Triangulo triangulo = new Triangulo(A, B, C);
+        triangulo.ClassificarTriangulo();
+    }
+}
